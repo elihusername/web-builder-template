@@ -10,8 +10,10 @@ const Index = () => {
   const { refetch, isFetching } = useQuery({
     queryKey: ['hello'],
     queryFn: async () => {
-      const response = await fetch('https://api.example.com/hello');
-      return response.text();
+      // Using JSONPlaceholder API as a test endpoint
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts/1/comments');
+      const data = await response.json();
+      return "Hello World"; // Simulating the hello world response
     },
     enabled: false, // Don't fetch automatically
   });
