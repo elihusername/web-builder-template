@@ -1,41 +1,7 @@
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
-import { useQuery } from "@tanstack/react-query";
 
 const Index = () => {
-  const { toast } = useToast();
-
-  const { refetch, isFetching } = useQuery({
-    queryKey: ['hello'],
-    queryFn: async () => {
-      // Using JSONPlaceholder API as a test endpoint
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts/1/comments');
-      const data = await response.json();
-      return "Hello World"; // Simulating the hello world response
-    },
-    enabled: false, // Don't fetch automatically
-  });
-
-  const handleClick = async () => {
-    try {
-      const result = await refetch();
-      if (result.data) {
-        toast({
-          title: "API Response",
-          description: result.data,
-        });
-      }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to fetch data",
-        variant: "destructive",
-      });
-    }
-  };
-
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-8 bg-[#222222]">
       <motion.h1 
@@ -46,19 +12,6 @@ const Index = () => {
       >
         Welcome to the future.
       </motion.h1>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 1 }}
-      >
-        <Button 
-          onClick={handleClick} 
-          disabled={isFetching}
-          className="text-lg"
-        >
-          Get Hello World
-        </Button>
-      </motion.div>
     </div>
   );
 };
