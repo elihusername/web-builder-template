@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -12,7 +13,7 @@ const Index = () => {
     }} transition={{
       duration: 1,
       ease: "easeOut"
-    }} className="text-white font-bold text-4xl md:text-6xl lg:text-7xl tracking-tight">
+    }} className="text-[#F1F0FB] font-bold text-4xl md:text-6xl lg:text-7xl tracking-tight">
         Welcome to the future.
       </motion.h1>
       <motion.div initial={{
